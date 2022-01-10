@@ -3,63 +3,23 @@
  */
 package org.niranzan.datastucture.linkedlist;
 
-import java.util.Iterator;
-
 /**
  * @author Dell
  *
  */
-public class DoublyLinkedList<T> implements Iterable<T> {
-    private int size;
-    private Node<T> head;
-    private Node<T> tail;
+public class DoublyLinkedListTest {
+    public static void main(String[] args) {
+        DoublyLinkedList<Integer> linkedList = new DoublyLinkedList<>();
 
-    @Override
-    public Iterator<T> iterator() {
-        return null;
-    }
-
-    public void clear() {
-        Node<T> traverse = this.head;
-        while (traverse != null) {
-            Node<T> next = traverse.next;
-            traverse.prev = traverse.next = null;
-            traverse.data = null;
-            traverse = next;
-        }
-        head = tail = null;
-        size = 0;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    public void addToFirst(T element) {
-        if (isEmpty()) {
-            head = tail = new Node<>(element);
-        } else {
-            head.prev = new Node<>(element, null, head);
-            head = head.prev;
-        }
-        size++;
-    }
-
-    public void addToLast(T element) {
-        if(isEmpty()) {
-            head = tail = new Node<>(element, null, null);
-        } else {
-            tail.next = new Node<>(element, tail, null);
-            tail = tail.next;
-        }
-        size++;
-    }
-
-    public void add(T element) {
-        addToLast(element);
+        linkedList.addToFirst(10);
+        linkedList.add(20);
+        linkedList.add(30);
+        linkedList.addToLast(40);
+        linkedList.add(50);
+        System.out.println(linkedList);
+        System.out.println("First Element:: " + linkedList.peekFirst());
+        System.out.println("Last Element:: " + linkedList.peekLast());
+        System.out.println("Removing First element:: " + linkedList.removeFirst());
+        System.out.println(linkedList);
     }
 }

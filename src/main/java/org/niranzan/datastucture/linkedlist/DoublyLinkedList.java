@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @author Dell
  *
  */
-public class SingleLinkedList<T> implements Iterable<T> {
+public class DoublyLinkedList<T> implements Iterable<T> {
     private int size;
     private Node<T> head;
     private Node<T> tail;
@@ -61,5 +61,39 @@ public class SingleLinkedList<T> implements Iterable<T> {
 
     public void add(T element) {
         addToLast(element);
+    }
+
+    public T peekFirst() {
+        if (isEmpty()) {
+            throw new RuntimeException("No element found!");
+        }
+        return head.data;
+    }
+
+    public T peekLast() {
+        if (isEmpty()) {
+            throw new RuntimeException("No element found!");
+        }
+        return tail.data;
+    }
+
+    public T removeFirst() {
+        T element = head.data;
+        head.data = null;
+        head = head.next;
+        --size;
+        return element;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer output = new StringBuffer("[\n");
+        Node<T> traverse = head;
+        while (traverse != null) {
+            output.append(traverse.toString() + " ---> \n");
+            traverse = traverse.next;
+        }
+        output.append("\n]");
+        return output.toString();
     }
 }

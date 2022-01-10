@@ -29,5 +29,7 @@ mvnw.cmd
 hs_err_pid*
 /datastucture.iml
 .idea/
-/target/
-*/target/**
+target/
+target/**
+.settings
+.mvn/*
